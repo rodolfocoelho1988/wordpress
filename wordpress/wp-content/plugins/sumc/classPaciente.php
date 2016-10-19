@@ -10,6 +10,7 @@ class Paciente{
 	var $estado;
 	var $sexo;
 	var $ultimaConsulta;
+	var $tipoSanguineo;
 	var $convenio;
 
 		# $dados - array contendo as variáveis para preenchimento da classe
@@ -25,12 +26,13 @@ class Paciente{
 			$this->estado           = $dados[7];
 			$this->sexo             = $dados[8];
 			$this->ultimaConsulta   = $dados[9];
-			$this->convenio         = $dados[10];
+			$this->tipoSanguineo	= $dados[10];
+			$this->convenio         = $dados[11];
 
 		}
 		function inserePaciente($dados){
 			$sql = "
-			INSERT INTO Paciente ('nome', 'cpf', 'RG', 'logadouro', 'bairro', 'cidade', 'estado', 'sexo', 'ultimaConsulta', 'convenio') VALUES (
+			INSERT INTO Paciente ('nome', 'cpf', 'RG', 'logadouro', 'bairro', 'cidade', 'estado', 'sexo', 'ultimaConsulta', 'tipoSanguineo','convenio') VALUES (
 			'$dados->idPaciente    ',
 			'$dados->nome          ',
 			'$dados->cpf           ',
@@ -41,6 +43,7 @@ class Paciente{
 			'$dados->estado        ',
 			'$dados->sexo          ',
 			'$dados->ultimaConsulta',
+			'$dados->tipoSanguineo ',
 			'$dados->convenio      ')
 			";
 			$result = mysql_query($sql);
@@ -50,8 +53,7 @@ class Paciente{
 		function alteraPaciente($idPaciente){
 			
 			$sql = "
-			UPDATE Paciente SET ('nome', 'cpf', 'RG', 'logadouro', 'bairro', 'cidade', 'estado', 'sexo', 'ultimaConsulta', 'convenio') VALUES (
-			'$dados->idPaciente    ',
+			UPDATE Paciente SET ('nome', 'cpf', 'RG', 'logadouro', 'bairro', 'cidade', 'estado', 'sexo', 'ultimaConsulta', 'tipoSanguineo','convenio') VALUES (
 			'$dados->nome          ',
 			'$dados->cpf           ',
 			'$dados->RG            ',
@@ -61,6 +63,7 @@ class Paciente{
 			'$dados->estado        ',
 			'$dados->sexo          ',
 			'$dados->ultimaConsulta',
+			'$dados->tipoSanguineo ',
 			'$dados->convenio      ')
 			WHERE idPaciente = '$idPaciente'
 			";
@@ -95,9 +98,10 @@ class Paciente{
 				$resultado['estado']			=$dados[7];
 				$resultado['sexo']				=$dados[8];
 				$resultado['ultimaConsulta']	=$dados[9];
-				$resultado['convenio']			=$dados[10];
+				$resultado['tipoSanguineo']		=$dados[10];
+				$resultado['convenio']			=$dados[11];
 				
-				return();	
+				return($resultado);	
 			}
 		}
 }  
