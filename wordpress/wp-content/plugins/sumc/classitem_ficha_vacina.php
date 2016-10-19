@@ -17,7 +17,6 @@ class Item_ficha_vacina{
 		function insereItem_ficha_vacina($dados){
 			$sql = "
 			INSERT INTO Item_ficha_vacina ('data_vacina','descricao_vacina','idConsulta') VALUES (
-			'$dados->idItem_ficha_vacina',
 			'$dados->data_vacina 		',
 			'$dados->descricao_vacina	',
 			'$dados->idConsulta			',
